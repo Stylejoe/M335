@@ -22,13 +22,17 @@
 		</style>
         <title>Tracker</title>
     </head>
+    <header>
+        <p>Menu</p>
+    </header>
     <body>
-        <div class="app">
+        <div>
             <h1>Home</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Getting Location...</p>
-                <p class="event received">Location spotted, greetings from the NSA</p>
-            </div>
+            <label for="latitude">X-Wert</label>
+            <input type="text" name="latitude" value="" readonly><br>
+            <label for="longitude">Y-Wert</label>
+            <input type="text" name="longitude" value="" readonly>  
+        </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
