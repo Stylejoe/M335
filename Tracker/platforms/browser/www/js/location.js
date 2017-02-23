@@ -4,9 +4,9 @@
     //   the current GPS coordinates
     //
     function onSuccess(position) {
-        //var element = document.getElementById('geolocation');
+
         document.getElementById("x").value =  position.coords.latitude;
-        document.getElementById("y").value =  position.coords.longitude;                        
+        document.getElementById("y").value =  position.coords.longitude;                             
     }
 
     // onError Callback receives a PositionError object

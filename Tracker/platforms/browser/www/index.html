@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;">
+        
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -10,18 +10,23 @@
         
 
         <!--Firebase Connection ACHTUNG WENN ES GEHT NOCH AUSLAGERN!-->
-        <script src="https://maps.googleapis.com/maps/api/js?key=Your_API_Key"></script>
-        <script>src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"</script>
-        <script>  
-        var config = {
-            apiKey: "AIzaSyAc-PLpf1HbaTkSGE-xZDz5kMVudMNAd6A",
-            authDomain: "trackerdb-77a7d.firebaseapp.com",
-            databaseURL: "https://trackerdb-77a7d.firebaseio.com",
-            storageBucket: "trackerdb-77a7d.appspot.com",
-            messagingSenderId: "281338715777"
-            };
-            firebase.initializeApp(config);
-        </script>
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAc-PLpf1HbaTkSGE-xZDz5kMVudMNAd6A",
+    authDomain: "trackerdb-77a7d.firebaseapp.com",
+    databaseURL: "https://trackerdb-77a7d.firebaseio.com",
+    storageBucket: "trackerdb-77a7d.appspot.com",
+    messagingSenderId: "281338715777"
+  };
+  firebase.initializeApp(config);
+</script>
+        <script type="text/javascript" src="js/writeData.js"></script>
         
         <!--Favicon Error Handling!-->
         <link rel="icon" href="data:;base64,iVBORw0KGgo=">
@@ -39,9 +44,9 @@
         <div>
             <h1>Home</h1>
             <label for="latitude">X-Wert</label>
-            <input type="text" name="latitude" id="x" readonly><br>
+            <input type="text" name="latitude" id="x" readonly onchange="setData()"><br>
             <label for="longitude">Y-Wert</label>
-            <input type="text" name="longitude" id="y" readonly> 
+            <input type="text" name="longitude" id="y" onchange="setData()" readonly> 
         </div>
         <div>
             
