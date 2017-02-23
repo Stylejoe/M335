@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;">
+        <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;connect-src http://api.openweathermap.org">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -35,15 +35,26 @@
         <p>Menu</p>
     </header>
     <body>
-        <div>
-            <h1>Home</h1>
+        <div class="div">
+            <h1>Erfassung</h1>
             <label for="latitude">X-Wert</label>
             <input type="text" name="latitude" id="x" readonly><br>
             <label for="longitude">Y-Wert</label>
             <input type="text" name="longitude" id="y" readonly> 
         </div>
-        <div>
-            
+        <div class="div">
+            <h1>Log</h1>
+            <input type="text" name="weather" id="weather" readonly> 
+            <table>
+                <tr>
+                    <td id="city"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
         </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
