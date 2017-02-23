@@ -26,9 +26,16 @@ var app = {
     //
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
+<<<<<<< HEAD
     //onDeviceReady: function() {
     //    this.receivedEvent('deviceready');
     //},
+=======
+    onDeviceReady: function() {
+        this.receivedEvent('deviceready');
+        getWeatherLocation();
+    },
+>>>>>>> 1bdd47e559e7a18b60e019331e4760716648ff60
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -36,8 +43,8 @@ var app = {
         //var listeningElement = parentElement.querySelector('.listening');
         //var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        //listeningElement.setAttribute('style', 'display:none;');
+        //receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
     }
