@@ -34,8 +34,21 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
-        <script type="text/javascript" src="js/initialiseDatabse.js"></script>
-		<style>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=Your_API_Key"></script>
+        <script>src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"</script>
+        <script>  
+        var config = {
+            apiKey: "AIzaSyAc-PLpf1HbaTkSGE-xZDz5kMVudMNAd6A",
+            authDomain: "trackerdb-77a7d.firebaseapp.com",
+            databaseURL: "https://trackerdb-77a7d.firebaseio.com",
+            storageBucket: "trackerdb-77a7d.appspot.com",
+            messagingSenderId: "281338715777"
+            };
+            firebase.initializeApp(config);
+        </script>
+        
+        <style>
 		/* For avoiding title truncation in wp8 */
 		.ui-header .ui-title {
 				overflow: visible !important;
@@ -49,7 +62,7 @@
 		</style>
         <title>Hello World</title>
     </head>
-    <body onload="initialiseDatabase">
+    <body>
 		<!-- page 1 -->
 		<div data-role="page" id="page1">
 			<div data-role="header">
@@ -64,15 +77,10 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-				<a href="#panel">Open panel</a>
+        <--openPanel--!>
 			</div><!-- /content -->
 		</div><!-- /page -->
 		
-		<!-- panel to reveal -->
-		<div data-role="panel" id="panel" data-position="left" data-display="overlay" data-theme="a">
-			<p>Place panel content here</p>
-			<a href="#close" data-rel="close">Close</a>
-		</div><!-- /panel -->
 <script type="text/javascript" src="cordova.js"></script><script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script><script type="text/javascript" id="jqm-trans-disable">
 		/* For having a faster transition */
 		$(document).on("mobileinit", function() {
@@ -80,9 +88,5 @@
 				$.mobile.defaultDialogTransition = "none";
 		});
 		</script><script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script><script type="text/javascript" src="js/index.js"></script>
-        <script id="paneljs">
-		$(function() {
-			try{$( "body>[data-role=\'panel\']" ).panel();}catch(e){}
-		});
-        </script></body>
+</body>
 </html>
