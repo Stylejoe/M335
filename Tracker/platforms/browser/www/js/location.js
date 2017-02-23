@@ -9,26 +9,11 @@
         var longitude = position.coords.longitude;
         document.getElementById("x").value =  latitude;
         document.getElementById("y").value =  longitude;  
-                     
+
+        getWeather(latitude, longitude);             
     }
 
-    var onWeatherSuccess = function (position) {
-    console.log("onWeatherSuccess");
-    Latitude = position.coords.latitude;
-    Longitude = position.coords.longitude;
-
-    getWeather(Latitude, Longitude);
-    }
-
-    // onError Callback receives a PositionError object
-    //
     function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
-
-    function onWeatherError()
-    {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
@@ -62,11 +47,4 @@
     });  
     }
 
-    // Options: throw an error if no update is received every 30 seconds.
-    //
-    function getWeatherLocation() {
-    console.log("getWeatherLocation");
-    navigator.geolocation.getCurrentPosition
-    (onWeatherSuccess, onWeatherError, { enableHighAccuracy: true });
-    }
     var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
