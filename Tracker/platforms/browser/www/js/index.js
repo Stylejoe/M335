@@ -20,7 +20,13 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-    },
+        
+        if(document.getElementsByClassName("event received"))
+        {
+            document.getElementById("asdf").innerHTML = "vel1sdfsadfao";
+        }
+
+},
 
     // deviceready Event Handler
     //
