@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
         <script src="https://maps.googleapis.com/maps/api/js?key=Your_API_Key"></script>
+        <script src="js/location.js"></script>
 		<style>
 		/* For avoiding title truncation in wp8 */
 		.ui-header .ui-title {
@@ -29,9 +30,12 @@
         <div>
             <h1>Home</h1>
             <label for="latitude">X-Wert</label>
-            <input type="text" name="latitude" value="" readonly><br>
+            <input type="text" name="latitude" id="x" readonly><br>
             <label for="longitude">Y-Wert</label>
-            <input type="text" name="longitude" value="" readonly>  
+            <input type="text" name="longitude" id="y" readonly> 
+        </div>
+        <div>
+            
         </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
