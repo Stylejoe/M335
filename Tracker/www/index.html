@@ -7,20 +7,28 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
+        
+
+        <!--Firebase Connection ACHTUNG WENN ES GEHT NOCH AUSLAGERN!-->
+        <script>src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"</script>
+        <script>  
+        var config = {
+            apiKey: "AIzaSyAc-PLpf1HbaTkSGE-xZDz5kMVudMNAd6A",
+            authDomain: "trackerdb-77a7d.firebaseapp.com",
+            databaseURL: "https://trackerdb-77a7d.firebaseio.com",
+            storageBucket: "trackerdb-77a7d.appspot.com",
+            messagingSenderId: "281338715777"
+            };
+            firebase.initializeApp(config);
+        </script>
+        
+        <!--Favicon Error Handling!-->
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+
+        <!--Google Maps import!-->
         <script src="https://maps.googleapis.com/maps/api/js?key=Your_API_Key"></script>
         <script src="js/location.js"></script>
-		<style>
-		/* For avoiding title truncation in wp8 */
-		.ui-header .ui-title {
-				overflow: visible !important;
-		}
-		/* For fixing the absolute position issue for the default cordova gen page*/
-		#cjp-accordion1 .app {
-				left: 5px !important;
-				margin: 5px !important;
-				position: relative !important;
-		}
-		</style>
         <title>Tracker</title>
     </head>
     <header>
