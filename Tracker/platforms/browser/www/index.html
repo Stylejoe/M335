@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-<<<<<<< HEAD
-        
-=======
-        <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;connect-src http://api.openweathermap.org">
->>>>>>> 1bdd47e559e7a18b60e019331e4760716648ff60
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;connect-src http://api.openweathermap.org"> -->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
+
+        <!--latest jquery-->
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
         
 
         <!--Firebase Connection ACHTUNG WENN ES GEHT NOCH AUSLAGERN!-->
-<<<<<<< HEAD
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase-database.js"></script>
@@ -32,19 +39,6 @@
   firebase.initializeApp(config);
 </script>
         <script type="text/javascript" src="js/writeData.js"></script>
-=======
-        <script>src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"</script>
-        <script>  
-        var config = {
-            apiKey: "AIzaSyAc-PLpf1HbaTkSGE-xZDz5kMVudMNAd6A",
-            authDomain: "trackerdb-77a7d.firebaseapp.com",
-            databaseURL: "https://trackerdb-77a7d.firebaseio.com",
-            storageBucket: "trackerdb-77a7d.appspot.com",
-            messagingSenderId: "281338715777"
-            };
-            firebase.initializeApp(config);
-        </script>
->>>>>>> 1bdd47e559e7a18b60e019331e4760716648ff60
         
         <!--Favicon Error Handling!-->
         <link rel="icon" href="data:;base64,iVBORw0KGgo=">
@@ -58,25 +52,32 @@
     <header>
         <p>Menu</p>
     </header>
-    <body>
+    <body onload="setData()">
         <div class="div">
             <h1>Erfassung</h1>
             <label for="latitude">X-Wert</label>
-            <input type="text" name="latitude" id="x" readonly onchange="setData()"><br>
+            <input type="text" name="latitude" id="x"><br>
             <label for="longitude">Y-Wert</label>
             <input type="text" name="longitude" id="y" onchange="setData()" readonly> 
         </div>
         <div class="div">
             <h1>Log</h1>
-            <input type="text" name="weather" id="weather" readonly> 
-            <table>
+            <table class="table table-striped table-hover table-responsive">
                 <tr>
-                    <td id="city"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>Ort</td><td id="city"></td><br>
+                </tr>
+                <tr>
+                    <td>Temperatur</td><td id="temp"></td><br>
+                </tr>
+                 <tr>
+                    <td>Ort</td><td id="city"></td><br>
+                </tr>
+                <tr>
+                    <td>Ort</td><td id="city"></td><br>
+                </tr>
+                <tr>
+                    <td>Ort</td><td id="city"></td><br>
+                </tr>
                 </tr>
             </table>
         </div>

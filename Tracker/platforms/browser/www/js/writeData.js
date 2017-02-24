@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 function latitudeAndLongitudeChanged(latitude, longitude)
 {
@@ -9,11 +8,14 @@ function setData()
 {
     var latitude = document.getElementById("x").value;
     var longitude = document.getElementById("y").value;
+    console.log("ELEMENTE GEHOLT");
 
         if(latitude != null && longitude != null)
-        {            
+        {       
+            console.log("ERSTES IF");     
             if(latitudeAndLongitudeChanged(latitude, longitude))
             {
+                console.log("IM IF DRINN");
                 writeHistoryData(latitude, longitude);
             }
 
@@ -28,30 +30,22 @@ function writeUserData(userId, name, email, imageUrl) {
   });
 }
 
-
 function writeHistoryData(latitude, longitude)
 {
-    var timestamp = new Date(year, month, day, hours, minutes, seconds, miliseconds);
+    console.log("IM IF DRINN");
+
     var locationHistory = {
         uid: "uid",
-=======
-function writeNewData(uid, latitude, longitude)
-{
-    var locationHistory = {
-        uid: uid,
->>>>>>> 1bdd47e559e7a18b60e019331e4760716648ff60
         latitude: latitude,
-        longitude: longitude,
-        timestamp: timestamp
+        longitude: longitude
     };
-<<<<<<< HEAD
 
-    var newHistoryKey = firebase.database().ref().child('historys').push().key();
+    console.log("IM IF DRINN");
+
+    var newHistoryKey = firebase.database().ref().child('historys').push().key;
 
     var updates = {};
     updates['/historys/' + newHistoryKey] = locationHistory;
 
     return firebase.database().ref().update(updates);
-=======
->>>>>>> 1bdd47e559e7a18b60e019331e4760716648ff60
 }
