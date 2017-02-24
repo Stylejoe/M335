@@ -30,6 +30,8 @@ function writeUserData(userId, name, email, imageUrl) {
   });
 }
 
+
+
 function writeHistoryData(latitude, longitude)
 {
     console.log("IM IF DRINN");
