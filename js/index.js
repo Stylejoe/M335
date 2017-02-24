@@ -29,7 +29,7 @@ var app = {
 
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-        getWeatherLocation();
+        startupHide();
     }
 
     // Update DOM on a Received Event
