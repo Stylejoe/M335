@@ -26,7 +26,13 @@ header {
 .div{
     margin-left: 7%;
     margin-right: 7%;
-    height: 50%;
+
+}
+.mapdiv{
+    margin-left: 7%;
+    margin-right: 7%;
+    height: 300px;
+    width: 300px;
 }
 
 body {
