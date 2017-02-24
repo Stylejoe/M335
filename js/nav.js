@@ -5,9 +5,11 @@ function startupHide()
     //wenn man registriert ist sollte man sich nicht mehr anmelden!
     if(firebase.auth().currentUser == null)
     {
-    $("#register").show();
-    $("#home").hide();
+    $("#register").hide();
+    $("#nav").show();
+    $("#home").show();
     $("#map").hide();
+<<<<<<< HEAD
     $("header").hide();
     }
     else
@@ -16,6 +18,10 @@ function startupHide()
     $("#home").show();
     $("#map").hide();
     $("header").show();
+=======
+    
+
+>>>>>>> 97f36b1ccd9c45b310bbf081af2d5b00db5892e1
     }
 
 }
@@ -23,6 +29,7 @@ function startupHide()
 function navigate(src,dest)
 {
     console.log("Navigate Success");
+
     var srcid = $("#"+src);
     var destid = $("#"+dest);
 

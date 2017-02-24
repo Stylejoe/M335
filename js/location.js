@@ -23,8 +23,9 @@ function onSuccess(position) {
         console.log("GECHANGED");
         document.getElementById("x").value =  latitude;
         document.getElementById("y").value =  longitude;
+        getWeather(latitude, longitude); 
 
-            console.log("Vergleich " + lastLat + " und " + latitude) + " und nachher";    
+         console.log("Vergleich " + lastLat + " und " + latitude) + " und nachher";    
             console.log("Vergleich " + lastLong + " und " + longitude) + ""
         if(round(lastLat, 3) != round(latitude, 3))
         {
@@ -38,8 +39,7 @@ function onSuccess(position) {
         }
 
         lastLat = latitude;
-        lastLong = longitude;
-        getWeather(latitude, longitude);        
+        lastLong = longitude;    
     }
 
     function onError(error) {
