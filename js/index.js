@@ -29,6 +29,7 @@ var app = {
 
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        startupHide();
     }
 
     // Update DOM on a Received Event

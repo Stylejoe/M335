@@ -1,14 +1,16 @@
 
+function startupHide()
+{
+    $("#home").show();
+    $("#map").hide();
+}
 
-function navigate(dest)
+function navigate(src,dest)
 {
     console.log("Navigate Success");
-    var div = document.getElementsByTagName("div");
-    var destid = $("#dest");
+    var srcid = $(src);
+    var destid = $(dest);
 
-    for(var i =0;i < div.length;i++)
-    {
-        div[i].hide();
-    }
+    srcid.hide();
     destid.show();
 }
