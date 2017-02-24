@@ -1,6 +1,7 @@
 
 function startupHide()
 {
+    console.log("startupHide success");
     $("#home").show();
     $("#map").hide();
 }

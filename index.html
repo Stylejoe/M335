@@ -39,21 +39,22 @@
   firebase.initializeApp(config);
 </script>
         <script type="text/javascript" src="js/writeData.js"></script>
-        
+        <script type="text/javascript" src="js/location.js"></script>
+        <script type="text/javascript" src="js/nav.js"></script>
         <!--Favicon Error Handling!-->
         <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
 
         <!--Google Maps import!-->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3AD5_wNvpKuiHNiKvml08ZzZCkEI8_Ts"></script>
-        <script src="js/location.js"></script>
         <title>Tracker</title>
     </head>
     <header>
-        <button onclick="navigate(home,map)">Map</button>
+        <button onclick="navigate('home','map')">Map</button>
         <p>Menu</p>
     </header>
     <body>
+        <div id="home">
         <div class="div">
             <h1>Erfassung</h1>
             <label for="latitude">X-Wert</label>
@@ -75,6 +76,9 @@
                 </tr>
             </table>
         </div>
+        </div>
+        <div id="map">
+            <p>Test</p>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
