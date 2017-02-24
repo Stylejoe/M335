@@ -29,7 +29,6 @@ var app = {
 
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-        getWeatherLocation();
     }
 
     // Update DOM on a Received Event
