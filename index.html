@@ -36,7 +36,6 @@
         <script type="text/javascript" src="js/writeData.js"></script>
         <script type="text/javascript" src="js/location.js"></script>
         <script type="text/javascript" src="js/nav.js"></script>
-        <script type="text/javascript" src="js/map.js"></script>
         <!--Favicon Error Handling!-->
         <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
@@ -45,38 +44,63 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3AD5_wNvpKuiHNiKvml08ZzZCkEI8_Ts"></script>
         <title>Tracker</title>
     </head>
-    <header>
-        <button onclick="navigate('home','map')">Map</button>
-        <p>Menu</p>
-    </header>
-    <body>
+    <div id="nav" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+            <!-- Title -->
+                <span class="mdl-layout-title"></span>
+                    <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="">Link</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Menü</span>
+    <nav class="mdl-navigation">
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect" onclick="navigate(map,home)">Wetteranzeige</button>
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect" onclick="navigate(home,map)">Karte</button>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content"><!-- Your content goes here -->
         <div id="home">
-        <div class="div">
+        <div >
             <h1>Erfassung</h1>
             <label for="latitude">X-Wert</label>
             <input type="text" name="latitude" id="x" onchange="setData()" readonly ><br>
             <label for="longitude">Y-Wert</label>
             <input type="text" name="longitude" id="y" onchange="setData()" readonly > 
         </div>
-        <div class="div">
+        <div >
             <h1>Wetter</h1>
-            <table class="table table-striped table-hover table-responsive">
-                <tr>
-                    <td>Ort</td><td id="city"></td><br>
-                </tr>
-                <tr>
-                    <td>Temperatur</td><td id="temp"></td><br>
-                </tr>
-                 <tr>
-                    <td>Windstärke</td><td id="wind"></td><br>
-                </tr>
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">  
+                <tbody>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Ort</td>
+                        <td id="city"></td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Temperatur</td>
+                        <td id="temp"></td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Windstärke</td>
+                        <td id="wind"></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
         </div>
         <div id="map" class="mapdiv">
             <p>Test</p>
-            <script>watchMapPosition()</script>
         </div>
+    </div>
+  </main>
+</div>
+    <body>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
 		<script type="text/javascript" id="jqm-trans-disable">

@@ -9,7 +9,6 @@
 
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
-
         google.maps.event.addDomListener(window, 'load', function(){initialize(latitude, longitude)});
     }
 

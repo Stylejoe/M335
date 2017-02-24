@@ -54,7 +54,11 @@ function writeHistoryData(latitude, longitude)
         longitude: longitude,
         time: time
     };
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 167d3aa84e2da2fd417ab1b7c99ce717f1ca164d
     var newHistoryKey = firebase.database().ref().child('historys').push().key;
 
     var updates = {};
