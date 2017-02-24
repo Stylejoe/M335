@@ -122,3 +122,10 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+#register {
+    background-color: dodgerblue;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}

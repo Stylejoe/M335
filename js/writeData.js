@@ -54,9 +54,7 @@ function writeHistoryData(latitude, longitude)
         longitude: longitude,
         time: time
     };
-
-    alert("IN FIREBASE ABGESPEICHERT!");
-
+    
     var newHistoryKey = firebase.database().ref().child('historys').push().key;
 
     var updates = {};

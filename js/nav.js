@@ -2,8 +2,17 @@
 function startupHide()
 {
     console.log("startupHide success");
-    $("#home").show();
+
+    //wenn man registriert ist sollte man sich nicht mehr anmelden!
+    if(true)
+    {
+    $("#register").show();
+    $("#home").hide();
     $("#map").hide();
+    $("header").hide();
+
+    }
+
 }
 
 function navigate(src,dest)
@@ -14,4 +23,9 @@ function navigate(src,dest)
 
     srcid.hide();
     destid.show();
+}
+
+function registered()
+{
+
 }
