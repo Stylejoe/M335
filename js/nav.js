@@ -3,7 +3,7 @@ function startupHide()
 {
     console.log("startupHide success");
     $("#home").show();
-    $("#mappage").hide();
+    $("#map").hide();
 }
 
 function navigate(src,dest)
