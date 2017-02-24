@@ -1,7 +1,7 @@
 var lastLat = null;
 var lastLong = null;
 
-    function round(zahl, nachkommastelle)
+ function round(zahl, nachkommastelle)
     {
         wert = parseFloat(zahl);
         if(!wert){

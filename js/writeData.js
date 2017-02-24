@@ -47,14 +47,15 @@ function writeUserData(userId, name, email, imageUrl) {
 
 function writeHistoryData(latitude, longitude)
 {
-
+    var time = firebase.database.ServerValue.TIMESTAMP;
     var locationHistory = {
         uid: "uid",
         latitude: latitude,
-        longitude: longitude
+        longitude: longitude,
+        time: time
     };
 
-    alert("IN FIREBASE ABGESPEICHERT!!!!!");
+    alert("IN FIREBASE ABGESPEICHERT!");
 
     var newHistoryKey = firebase.database().ref().child('historys').push().key;
 
