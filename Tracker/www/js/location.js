@@ -4,11 +4,13 @@
     //   the current GPS coordinates
     //
     function onSuccess(position) {
-        
+        console.log("Success!");
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         document.getElementById("x").value =  latitude;
         document.getElementById("y").value =  longitude;  
+
+        console.log(latitude, longitude);
 
         getWeather(latitude, longitude);             
     }
