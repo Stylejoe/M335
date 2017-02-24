@@ -52,13 +52,13 @@
     <header>
         <p>Menu</p>
     </header>
-    <body onload="setData()">
+    <body>
         <div class="div">
             <h1>Erfassung</h1>
             <label for="latitude">X-Wert</label>
-            <input type="text" name="latitude" id="x"><br>
+            <input type="text" name="latitude" id="x" onchange="setData()" ><br>
             <label for="longitude">Y-Wert</label>
-            <input type="text" name="longitude" id="y" onchange="setData()" readonly> 
+            <input type="text" name="longitude" id="y" onchange="setData()" > 
         </div>
         <div class="div">
             <h1>Log</h1>

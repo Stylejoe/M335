@@ -1,24 +1,13 @@
-
-function latitudeAndLongitudeChanged(latitude, longitude)
-{
-    return true;
-}
-
 function setData()
 {
     var latitude = document.getElementById("x").value;
     var longitude = document.getElementById("y").value;
     console.log("ELEMENTE GEHOLT");
 
-        if(latitude != null && longitude != null)
+        if(latitude != null && longitude != null && latitude != "" && longitude != "")
         {       
-            console.log("ERSTES IF");     
-            if(latitudeAndLongitudeChanged(latitude, longitude))
-            {
-                console.log("IM IF DRINN");
+            console.log("IF drinn");     
                 writeHistoryData(latitude, longitude);
-            }
-
         }
 }
 
