@@ -1,11 +1,22 @@
+var lastLat = null;
+var lastLong = null;
 
-    // onSuccess Callback
-    //   This method accepts a `Position` object, which contains
-    //   the current GPS coordinates
-    //
-    function onSuccess(position) {
-        console.log("GetLocation Success");
+    function round(zahl, nachkommastelle)
+    {
+        wert = parseFloat(zahl);
+        if(!wert){
+            return 0;
+        }
 
+        var umrechnungsnachstelle = Math.pow(10, nachkommastelle);
+
+        wert = (Math.round(wert * umrechnungsnachstelle) / umrechnungsnachstelle);
+        return wert;
+    }
+
+function onSuccess(position) {
+       console.log("GetLocation Success");
+ 
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
 
@@ -13,38 +24,23 @@
         document.getElementById("x").value =  latitude;
         document.getElementById("y").value =  longitude;
 
-        console.log("vor if");
+            console.log("Vergleich " + lastLat + " und " + latitude) + " und nachher";    
+            console.log("Vergleich " + lastLong + " und " + longitude) + ""
         if(round(lastLat, 3) != round(latitude, 3))
         {
+            console.log("Vergleich " + lastLat + " und " + latitude) + " sie sind ungleich";
             $("#x").change();           
         }
-        else if(round(lastlong, 3) != round(longitude, 3))
+        else if(round(lastLong, 3) != round(longitude, 3))
         {
+               console.log("Vergleich " + lastLong + " und " + longitude) + " sie sind ungleich";
              $("#y").change();            
         }
 
-        var lastLat = latitude;
-        var lastLong = longitude;
-        getWeather(latitude, longitude);             
+        lastLat = latitude;
+        lastLong = longitude;
+        getWeather(latitude, longitude);        
     }
-
-    function round(zahl, nachkommastelle)
-    {
-        console.log(zahl + "in round hinein mit der Zahl:");
-        wert = parseFloat(zahl);
-        if(!wert){
-            return 0;
-        }
-        console.log("wert " + wert);
-
-        var umrechnungsnachstelle = Math.pow(10, nachkommastelle);
-
-        wert = (Math.round(wert * umrechnungsnachstelle) / umrechnungsnachstelle);
-        console.log("wert gerundet " + wert);
-        return wert;
-    }
-
-
 
     function onError(error) {
         alert('code: '    + error.code    + '\n' +
