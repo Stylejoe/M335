@@ -8,8 +8,8 @@ function startupHide()
 function navigate(src,dest)
 {
     console.log("Navigate Success");
-    var srcid = $(src);
-    var destid = $(dest);
+    var srcid = $("#"+src);
+    var destid = $("#"+dest);
 
     srcid.hide();
     destid.show();
