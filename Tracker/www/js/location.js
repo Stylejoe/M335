@@ -4,7 +4,7 @@
     //   the current GPS coordinates
     //
     function onSuccess(position) {
-        
+        console.log("GetLocation Success");
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         document.getElementById("x").value =  latitude;
