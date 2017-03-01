@@ -15,6 +15,13 @@ var lastLong = null;
     }
 
 function onSuccess(position) {
+
+        var user = firebase.auth().currentUser;
+        if(!user)
+        {
+            return;
+        }
+        
        console.log("GetLocation Success");
  
         var latitude = position.coords.latitude;

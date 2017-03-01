@@ -50,6 +50,7 @@ firebase.auth().getRedirectResult().then(function(result) {
   }
   // The signed-in user info.
   var user = result.user;
+
 }).catch(function(error) {
   // Handle Errors here.
   var errorCode = error.code;
@@ -78,8 +79,28 @@ firebase.auth().getRedirectResult().then(function(result) {
   // ...
 });*/
 
-authentificateUser()
+//authentificateUser()
 }
+
+/*firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    $("#register").hide();
+    $("#home").show();
+    $("#map").hide();
+    $("#headerid").show();
+    $("#nav").show();
+
+    // User is signed in.
+  } else {
+    $("#headerid").hide();
+    $("#register").show();
+    $("#home").hide();
+    $("#map").hide();
+     $("#nav").hide();
+
+    // No user is signed in.
+  }
+});
 
 function authentificateUser(){
     
@@ -89,16 +110,18 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#home").show();
     $("#map").hide();
     $("#headerid").show();
+    $("#nav").show();
 
     // User is signed in.
   } else {
     $("#headerid").hide();
     $("#register").show();
     $("#home").hide();
-    $("#map").hide();ss
+    $("#map").hide();
+     $("#nav").hide();
 
     // No user is signed in.
   }
 });
-}
+}*/
 

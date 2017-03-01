@@ -3,28 +3,28 @@ function startupHide()
     console.log("startupHide success");
 
     //wenn man registriert ist sollte man sich nicht mehr anmelden!
+    console.log(firebase.auth().currentUser + " CURRENT USER");
     if(firebase.auth().currentUser == null)
+    
     {
-    $("#register").hide();
-    $("#nav").show();
-    $("#home").show();
+    $("#register").show();
+    $("#nav").hide();
+    $("#home").hide();
     $("#map").hide();
-<<<<<<< HEAD
     $("header").hide();
     }
     else
     {
     $("#register").hide();
+    $("#nav").show();
     $("#home").show();
     $("#map").hide();
     $("header").show();
-=======
-    
-
->>>>>>> 97f36b1ccd9c45b310bbf081af2d5b00db5892e1
     }
 
 }
+
+
 
 function navigate(src,dest)
 {
