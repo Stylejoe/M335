@@ -126,3 +126,9 @@ button
 #home{
     display: none;
 }
+#registerEmail{
+    display: none;
+}
+#login{
+    display: none;
+}

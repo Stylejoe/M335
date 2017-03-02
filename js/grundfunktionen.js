@@ -32,6 +32,8 @@
         document.getElementById("nav").style.display = "none";
         document.getElementById("map").style.display = "none";
         document.getElementById("home").style.display = "none";
+        document.getElementById("login").style.display = "none";
+         document.getElementById("registerEmail").style.display = "none";
 
     }
 
