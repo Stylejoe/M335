@@ -12,6 +12,7 @@ function MapSuccess(position) {
     google.maps.event.addDomListener(window, 'load', function () { initialize(latitude, longitude) });
 }
 
+var map;
 function initialize(latitude, longitude) {
     console.log("initialize map success");
     var latLong = new google.maps.LatLng(latitude, longitude);
