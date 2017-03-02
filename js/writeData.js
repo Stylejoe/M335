@@ -53,7 +53,6 @@ function writeHistoryData(latitude, longitude)
     var name, email, photoUrl, uid, emailVerified;
 
         console.log("Drinn");
-        name = user.displayName;
         email = user.email;
         photoUrl = user.photoURL;
         emailVerified = user.emailVerified;

@@ -34,6 +34,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
   }
 });*/
+
+//Google loginButton
 var loginWithGoogle = document.getElementById('googleAuthentification');
 var currentUID;
 
@@ -45,6 +47,7 @@ function writeUserData(userId, name, email, imageUrl) {
   });
 }
 
+
 function userNonFirstTime(){
     // Get authentication data
 var authData = firebase.auth();
@@ -55,7 +58,7 @@ var userid = authData.currentUser.uid;
 console.log("Der User heisst: "+userid);
 
 
-// Call your function to check if they are a first time user (aka exists).
+// Call your function to check if they are a first time user.
 
 if(userid == null)
 {
@@ -71,16 +74,14 @@ else
 function userFirstTimeCallback(userId, exists) {
   if (exists) {
       return true;
-    //alert('user ' + userId + ' exists!');
-    // Do something here you want to do for non-firstime users...
+    // non-firstime users...
   } else {
       return false;
-    //alert('user ' + userId + ' does not exist!');
-    // Do something here you want to do for first time users (Store data in database?)
+    //first time users (store in database)
   }
 }
 
-// Tests to see if /users/<userId> exists. 
+// Tests to see if users exists. 
 function checkForFirstTime(userId) { 
 
     firebase.database().ref().child('users').child(userId).once('value', function(snapshot) {
@@ -91,7 +92,7 @@ function checkForFirstTime(userId) {
 
 
 function onAuthStateChanged(user) {
-  // We ignore token refresh events.
+
   if (user && currentUID === user.uid) {
     return;
   }
@@ -100,12 +101,9 @@ function onAuthStateChanged(user) {
 
   if (user) {
     currentUID = user.uid;
-    $("#register").hide();
-    $("#nav").show();
-    $("#home").show();
-    $("#map").hide();
-    $("header").show();
-
+    noneDisplayElementWithId("register");
+    displayElementWithId("home");
+    displayElementWithId("nav");
 
     //splashPage.style.display = 'none';
 
@@ -125,11 +123,8 @@ function onAuthStateChanged(user) {
     // Set currentUID to null.
     currentUID = null;
     // Display the splash page where you can sign-in.
-    $("#register").show();
-    $("#nav").hide();
-    $("#home").hide();
-    $("#map").hide();
-    $("header").hide();
+    HideAllElements();
+    displayElementWithId("register");
     //splashPage.style.display = '';
   }
 }
@@ -138,6 +133,9 @@ function onAuthStateChanged(user) {
 
 
 window.addEventListener('load', function() {
+
+  HideAllElements();
+  displayElementWithId("register");
 
 loginWithGoogle.addEventListener('click', function(){
   
