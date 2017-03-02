@@ -59,7 +59,7 @@ console.log("Der User heisst: "+userid);
 
 if(userid == null)
 {
-    return true;
+    return false;
 }
 else
 {

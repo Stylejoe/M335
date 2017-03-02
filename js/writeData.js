@@ -52,7 +52,7 @@ function writeHistoryData(latitude, longitude)
     var user = firebase.auth().currentUser;
     var name, email, photoUrl, uid, emailVerified;
 
-    if (user != null) {
+        console.log("Drinn");
         name = user.displayName;
         email = user.email;
         photoUrl = user.photoURL;
@@ -62,7 +62,7 @@ function writeHistoryData(latitude, longitude)
 
 
     var locationHistory = {
-        uid: uid,
+        email: user.email,
         latitude: latitude,
         longitude: longitude,
         time: time
@@ -73,5 +73,4 @@ function writeHistoryData(latitude, longitude)
     updates['/historys/' + newHistoryKey] = locationHistory;
 
     return firebase.database().ref().update(updates);
-    }
 }

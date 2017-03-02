@@ -16,11 +16,6 @@ var lastLong = null;
 
 function onSuccess(position) {
         console.log("onSuccess");
-        var user = firebase.auth().currentUser;
-        if(!user)
-        {
-            return;
-        }
         
        console.log("GetLocation Success");
  
@@ -84,3 +79,5 @@ function onSuccess(position) {
     }
 
     //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
+
+    
