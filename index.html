@@ -46,10 +46,9 @@
         <title>Tracker</title>
     </head>
     <body>
-        <div id="register">
+        <div id="register" class="geolocation">
             <h1>Tracker App</h1>
-            <button  id="googleAuthentification">Sign in with Google</button>
-            <p>By Dueen Brunner & Christopher Buchmann</p>      
+            <button id="googleAuthentification" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Sign in with Google</button>    
             <script type="text/javascript" src="js/CreateUserAndAuth.js"></script>
         </div>
     <div id="nav" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -73,8 +72,8 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Ansicht</span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" onclick="navigate('map','home')">Wetter</a>
-      <a class="mdl-navigation__link" onclick="navigate('home','map')">Karte</a>
+        <a class="mdl-navigation__link" onclick="navigate('home','map')">Karte</a>
+        <a class="mdl-navigation__link" onclick="navigate('map','home')">Wetter</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
