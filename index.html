@@ -33,11 +33,15 @@
   };
   firebase.initializeApp(config);
 </script>
+        <script type="text/javascript" src="js/grundfunktionen.js"></script>
         <script type="text/javascript" src="js/writeData.js"></script>
         <script type="text/javascript" src="js/nav.js"></script>
         <script type="text/javascript" src="js/CreateUserAndAuth.js"></script>
         <script type="text/javascript" src="js/location.js"></script>
         <script type="text/javascript" src="js/map.js"></script>
+
+
+
         <!--Favicon Error Handling!-->
         <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
@@ -51,6 +55,8 @@
             <h1>Tracker App</h1>
             <button onclick="signInWithGoogle()">Mit Google Anmelden!</button>
             <p>By Dueen Brunner & Christopher Buchmann</p>
+            <button  id="googleAuthentification">Sign in with Google</button>      
+            <script type="text/javascript" src="js/CreateUserAndAuth.js"></script>
         </div>
     <div id="nav" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">

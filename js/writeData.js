@@ -43,52 +43,6 @@ function writeUserData(userId, name, email, imageUrl) {
   });
 }
 
-function userNonFirstTime(){
-    // Get authentication data
-var authData = firebase.auth();
-console.log(authData);
-
-// Get your user information
-var userid = authData.currentUser.uid;
-console.log("Der User heisst: "+userid);
-
-
-// Call your function to check if they are a first time user (aka exists).
-
-if(userid == null)
-{
-    return true;
-}
-else
-{
-    return checkForFirstTime(userid);
-}
-
-}
-
-function userFirstTimeCallback(userId, exists) {
-  if (exists) {
-      return true;
-    //alert('user ' + userId + ' exists!');
-    // Do something here you want to do for non-firstime users...
-  } else {
-      return false;
-    //alert('user ' + userId + ' does not exist!');
-    // Do something here you want to do for first time users (Store data in database?)
-  }
-}
-
-// Tests to see if /users/<userId> exists. 
-function checkForFirstTime(userId) { 
-
-    firebase.database().ref().child('users').child(userId).once('value', function(snapshot) {
-    var exists = (snapshot.val() !== null);
-   return userFirstTimeCallback(userId, exists);
-  });
-}
-
-
-
 
 function writeHistoryData(latitude, longitude)
 {
@@ -103,20 +57,7 @@ function writeHistoryData(latitude, longitude)
         email = user.email;
         photoUrl = user.photoURL;
         emailVerified = user.emailVerified;
-        uid = user.uid;     // The user's ID, unique to the Firebase project. Do NOT use
-           
-        
-        if(userNonFirstTime())
-        {
-            writeUserData(uid, name, email, photoUrl); 
-            console.log("FirstTImeUser");
-        }
-        else{
-                    console.log("KeinFirstTimeUser");
-        }
-
-
-               
+        uid = user.uid;     // The user's ID, unique to the Firebase project. Do NOT use           
 
 
 
