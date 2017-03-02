@@ -34,19 +34,18 @@
   firebase.initializeApp(config);
 </script>
         <script type="text/javascript" src="js/writeData.js"></script>
-        <script type="text/javascript" src="js/location.js"></script>
         <script type="text/javascript" src="js/nav.js"></script>
         <script type="text/javascript" src="js/CreateUserAndAuth.js"></script>
+        <script type="text/javascript" src="js/location.js"></script>
+        <script type="text/javascript" src="js/map.js"></script>
         <!--Favicon Error Handling!-->
         <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
 
         <!--Google Maps import!-->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3AD5_wNvpKuiHNiKvml08ZzZCkEI8_Ts"></script>
+       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVcJZRfIc0Dv-0RtzNRZwsl7oYY5_JEVY"></script>
         <title>Tracker</title>
     </head>
-    <header id="headerid">
-    </header>
     <body>
         <div id="register">
             <button onclick="signInWithGoogle()">Mit Google Anmelden!</button>      
@@ -58,51 +57,60 @@
                 <span class="mdl-layout-title"></span>
                     <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" href="">Link</a>
-      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Menü</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Menü</span>
+    <span class="mdl-layout-title">Ansicht</span>
     <nav class="mdl-navigation">
-      <button class="mdl-button mdl-js-button mdl-js-ripple-effect" onclick="navigate(map,home)">Wetteranzeige</button>
-      <button class="mdl-button mdl-js-button mdl-js-ripple-effect" onclick="navigate(home,map)">Karte</button>
+      <a class="mdl-navigation__link" onclick="navigate('map','home')">Wetter</a>
+      <a class="mdl-navigation__link" onclick="navigate('home','map')">Karte</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
+    <div class="page-content"><!-- Your content goes here --></div>
+  </main>
+</div>
+  <main class="mdl-layout__content">
     <div class="page-content"><!-- Your content goes here -->
         <div id="home">
-        <div >
+        <div>
+            <h1>Wetter</h1>
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">  
+                <tbody>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Ort</td>
+                        <td id="city">Fehler bei Erfassung!</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Temperatur</td>
+                        <td id="temp">Fehler bei Erfassung!</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Windstärke</td>
+                        <td id="wind">Fehler bei Erfassung!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="geolocation">
             <h1>Erfassung</h1>
             <label for="latitude">X-Wert</label>
             <input type="text" name="latitude" id="x" onchange="setData()" readonly ><br>
             <label for="longitude">Y-Wert</label>
             <input type="text" name="longitude" id="y" onchange="setData()" readonly > 
         </div>
-        <div >
-            <h1>Wetter</h1>
-            <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">  
-                <tbody>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Ort</td>
-                        <td id="city"></td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Temperatur</td>
-                        <td id="temp"></td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Windstärke</td>
-                        <td id="wind"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
         </div>
         <div id="map" class="mapdiv">
-            <p>Test</p>
+            <script>watchMapPosition()</script>
         </div>
     </div>
   </main>

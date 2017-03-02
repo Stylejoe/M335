@@ -15,7 +15,7 @@ var lastLong = null;
     }
 
 function onSuccess(position) {
-
+        console.log("onSuccess");
         var user = firebase.auth().currentUser;
         if(!user)
         {

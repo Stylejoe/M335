@@ -6,11 +6,17 @@
 header {
     height: 10%;
 }
-.mapdiv{
-    margin-left: 7%;
-    margin-right: 7%;
-    height: 300px;
-    width: 300px;
+table
+{
+    margin: auto;
+}
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
 }
 
 body {
@@ -38,6 +44,18 @@ body {
     width:100%;
 }
 
+.geolocation
+{
+    margin-left: 7%;
+    margin-right: 7%;
+}
+.mapdiv
+{
+    margin: auto;
+    height: 100%;
+    width: 100%;
+}
+
 /* Portrait layout (default) */
 .app {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
@@ -62,14 +80,7 @@ body {
     }
 }
 
-h1 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
-}
+
 
 .event {
     border-radius:4px;

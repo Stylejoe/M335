@@ -19,12 +19,9 @@ function startupHide()
     $("#nav").show();
     $("#home").show();
     $("#map").hide();
-    $("header").show();
     }
 
 }
-
-
 
 function navigate(src,dest)
 {
