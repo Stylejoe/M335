@@ -34,15 +34,165 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
   }
 });*/
+var loginWithGoogle = document.getElementById('googleAuthentification');
+var currentUID;
 
-function signInWithGoogle()
+function writeUserData(userId, name, email, imageUrl) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
+
+function userNonFirstTime(){
+    // Get authentication data
+var authData = firebase.auth();
+console.log(authData);
+
+// Get your user information
+var userid = authData.currentUser.uid;
+console.log("Der User heisst: "+userid);
+
+
+// Call your function to check if they are a first time user (aka exists).
+
+if(userid == null)
 {
-var provider = new firebase.auth.GoogleAuthProvider();
-provider.addScope('https://www.googleapis.com/auth/plus.login');
+    return true;
+}
+else
+{
+    return checkForFirstTime(userid);
+}
 
-firebase.auth().signInWithRedirect(provider);
+}
 
-firebase.auth().getRedirectResult().then(function(result) {
+function userFirstTimeCallback(userId, exists) {
+  if (exists) {
+      return true;
+    //alert('user ' + userId + ' exists!');
+    // Do something here you want to do for non-firstime users...
+  } else {
+      return false;
+    //alert('user ' + userId + ' does not exist!');
+    // Do something here you want to do for first time users (Store data in database?)
+  }
+}
+
+// Tests to see if /users/<userId> exists. 
+function checkForFirstTime(userId) { 
+
+    firebase.database().ref().child('users').child(userId).once('value', function(snapshot) {
+    var exists = (snapshot.val() !== null);
+   return userFirstTimeCallback(userId, exists);
+  });
+}
+
+
+function onAuthStateChanged(user) {
+  // We ignore token refresh events.
+  if (user && currentUID === user.uid) {
+    return;
+  }
+
+  
+
+  if (user) {
+    currentUID = user.uid;
+    $("#register").hide();
+    $("#nav").show();
+    $("#home").show();
+    $("#map").hide();
+    $("header").show();
+
+
+    //splashPage.style.display = 'none';
+
+        if(!userNonFirstTime())
+        {
+            writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+            console.log("FirstTImeUser");
+        }
+        else{
+                    console.log("KeinFirstTimeUser");
+        }
+
+    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
+    
+    //startDatabaseQueries();
+  } else {
+    // Set currentUID to null.
+    currentUID = null;
+    // Display the splash page where you can sign-in.
+    $("#register").show();
+    $("#nav").hide();
+    $("#home").hide();
+    $("#map").hide();
+    $("header").hide();
+    //splashPage.style.display = '';
+  }
+}
+
+
+
+
+window.addEventListener('load', function() {
+
+loginWithGoogle.addEventListener('click', function(){
+  
+ var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider);
+  });
+  });
+
+  firebase.auth().onAuthStateChanged(onAuthStateChanged);
+
+  
+
+
+//firebase.auth().signInWithPopup(provider);
+ /*provider.addScope('https://www.googleapis.com/auth/plus.login');
+
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Google Access Token. You can use it to access the Google API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+});*/
+
+
+
+/*var credential = firebase.auth.GoogleAuthProvider.credential(
+              googleUser.getAuthResponse().id_token);
+
+firebase.auth().signInWithCredential(credential).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  if (errorCode === 'auth/account-exists-with-different-credential') {
+    alert('Email already associated with another account.');
+    // Handle account linking here, if using.
+  } else {
+    console.error(error);
+  }
+ });*/
+
+/*firebase.auth().getRedirectResult().then(function(result) {
   if (result.credential) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
@@ -60,27 +210,17 @@ firebase.auth().getRedirectResult().then(function(result) {
   // The firebase.auth.AuthCredential type that was used.
   var credential = error.credential;
   // ...
-});
-
-/*firebase.auth().signInWithPopup(provider).then(function(result) {
-  // This gives you a Google Access Token. You can use it to access the Google API.
-  var token = result.credential.accessToken;
-  // The signed-in user info.
-  var user = result.user;
-  // ...
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
-  // ...
 });*/
 
+  //firebase.auth().onAuthStateChanged(onAuthStateChanged);
+
+
+
+
+
 //authentificateUser()
-}
+
+
 
 /*firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
