@@ -34,12 +34,12 @@
   };
   firebase.initializeApp(config);
 </script>
-        <script type="text/javascript" src="js/grundfunktionen.js"></script>
-        <script type="text/javascript" src="js/writeData.js"></script>
-        <script type="text/javascript" src="js/nav.js"></script>
-        <script type="text/javascript" src="js/CreateUserAndAuth.js"></script>
-        <script type="text/javascript" src="js/location.js"></script>
-        <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/grundfunktionen.js"></script>
+    <script type="text/javascript" src="js/writeData.js"></script>
+    <script type="text/javascript" src="js/nav.js"></script>
+    <script type="text/javascript" src="js/CreateUserAndAuth.js"></script>
+    <script type="text/javascript" src="js/location.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
 
     <!--Favicon Error Handling!-->
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
@@ -48,79 +48,77 @@
     <title>Tracker</title>
 </head>
 
-<body>
-    <div id="register" class="geolocation">
-        <h1>Tracker App</h1>
-        <button id="googleAuthentification" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Sign in with Google</button>
-        <script type="text/javascript" src="js/CreateUserAndAuth.js"></script>
+<div id="register" class="geolocation">
+    <h1>Tracker App</h1>
+    <button id="googleAuthentification" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Sign in with Google</button>
+    <script type="text/javascript" src="js/CreateUserAndAuth.js"></script>
+</div>
+<div id="nav" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Menü</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Ansicht</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" onclick="navigate('map','home')">Wetter</a>
+                <a class="mdl-navigation__link" onclick="navigate('home','map')">Karte</a>
+            </nav>
+        </div>
     </div>
-    <div id="nav" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-            <header class="mdl-layout__header">
-                <div class="mdl-layout__header-row">
-                    <!-- Title -->
-                    <span class="mdl-layout-title"></span>
-                    <!-- Add spacer, to align navigation to the right -->
-                    <div class="mdl-layout-spacer"></div>
+
+<body class="center">
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <!-- Your content goes here -->
+            <div id="home">
+                <div>
+                    <h1>Wetter</h1>
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                        <tbody>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Ort</td>
+                                <td id="city">Fehler bei Erfassung!</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Temperatur</td>
+                                <td id="temp">Fehler bei Erfassung!</td>
+                            </tr>
+                            <tr>
+                                <td class="mdl-data-table__cell--non-numeric">Windstärke</td>
+                                <td id="wind">Fehler bei Erfassung!</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </header>
-            <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title">Ansicht</span>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" onclick="navigate('home','map')">Karte</a>
-                    <a class="mdl-navigation__link" onclick="navigate('map','home')">Wetter</a>
-                </nav>
+                <div>
+                    <h1>Erfassung</h1>
+                    <label for="latitude">X-Wert</label>
+                    <input type="text" name="latitude" id="x" onchange="setData()" readonly><br>
+                    <label for="longitude">Y-Wert</label>
+                    <input type="text" name="longitude" id="y" onchange="setData()" readonly>
+                </div>
+            </div>
+            <div id="map" class="mapdiv">
+                <script>watchMapPosition()</script>
             </div>
         </div>
-
-        <body>
-            <main class="mdl-layout__content">
-                <div class="page-content">
-                    <!-- Your content goes here -->
-                    <div id="home" class="geolocation">
-                        <div>
-                            <h1>Wetter</h1>
-                            <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
-                                <tbody>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric">Ort</td>
-                                        <td id="city">Fehler bei Erfassung!</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric">Temperatur</td>
-                                        <td id="temp">Fehler bei Erfassung!</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric">Windstärke</td>
-                                        <td id="wind">Fehler bei Erfassung!</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="geolocation">
-                            <h1>Erfassung</h1>
-                            <label for="latitude">X-Wert</label>
-                            <input type="text" name="latitude" id="x" onchange="setData()" readonly><br>
-                            <label for="longitude">Y-Wert</label>
-                            <input type="text" name="longitude" id="y" onchange="setData()" readonly>
-                        </div>
-                    </div>
-                    <div id="map" class="mapdiv">
-                        <script>watchMapPosition()</script>
-                    </div>
-                </div>
-            </main>
-            <script type="text/javascript" src="cordova.js"></script>
-            <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
-            <script type="text/javascript" id="jqm-trans-disable">
+    </main>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
+    <script type="text/javascript" id="jqm-trans-disable">
 		/* For having a faster transition */
 		$(document).on("mobileinit", function() {
 				$.mobile.defaultPageTransition = "none";
 				$.mobile.defaultDialogTransition = "none";
 		});
 		</script>
-            <script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>
-            <script type="text/javascript" src="js/index.js"></script>
-        </body>
+    <script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
 
 </html>
