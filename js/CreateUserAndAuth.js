@@ -35,6 +35,9 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });*/
 
+
+var actualBenutzer = firebase.auth().currentUser;
+
 //Google loginButton
 var loginWithGoogle = document.getElementById('googleAuthentification');
 var currentUID;
@@ -90,7 +93,6 @@ function checkForFirstTime(userId) {
   });
 }
 
-
 function onAuthStateChanged(user) {
 
 console.log("onautstatechanged " + user);
@@ -98,11 +100,12 @@ console.log("onautstatechanged " + user);
   if (user && currentUID === user.uid) {
     return;
   }
-
+  actualBenutzer = user;
   
 
   if (user) {
     currentUID = user.uid;
+    
     noneDisplayElementWithId("register");
     displayElementWithId("home");
     displayElementWithId("nav");
@@ -117,8 +120,6 @@ console.log("onautstatechanged " + user);
         else{
                     console.log("KeinFirstTimeUser");
         }
-
-    //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
     
     //startDatabaseQueries();
   } else {

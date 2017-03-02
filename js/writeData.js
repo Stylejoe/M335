@@ -1,7 +1,3 @@
-var grundfunktionen = document.createElement('script');
-grundfunktionen.type = 'text/javascript';
-grundfunktionen.src = 'grundfunktionen.js';
-
 var lastLat = null;
 var lastLong = null;
 
@@ -46,23 +42,21 @@ function writeUserData(userId, name, email, imageUrl) {
 
 function writeHistoryData(latitude, longitude)
 {
-   
+   var user = firebase.auth().currentUser;
     var time = firebase.database.ServerValue.TIMESTAMP;
 
-    var user = firebase.auth().currentUser;
+
     var name, email, photoUrl, uid, emailVerified;
 
-    if(user)
+
+if (user != null)
     {
         email = user.email;
         photoUrl = user.photoURL;
         emailVerified = user.emailVerified;
         uid = user.uid;     // The user's ID, unique to the Firebase project.   
     }
-    else
-    {
-        return;
-    }
+
        
 
 
