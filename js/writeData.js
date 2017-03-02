@@ -55,7 +55,7 @@ function writeHistoryData(latitude, longitude)
         email = user.email;
         photoUrl = user.photoURL;
         emailVerified = user.emailVerified;
-        uid = user.uid;     // The user's ID, unique to the Firebase project. Do NOT use           
+        uid = user.uid;     // The user's ID, unique to the Firebase project.          
 
 
 
