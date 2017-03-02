@@ -1,4 +1,5 @@
-    function round(zahl, nachkommastelle)
+   //round function for writeData
+   function round(zahl, nachkommastelle)
     {
         wert = parseFloat(zahl);
         if(!wert){
@@ -10,4 +11,30 @@
         wert = (Math.round(wert * umrechnungsnachstelle) / umrechnungsnachstelle);
         return wert;
     }
+
+    //How to show things
+    function displayElementWithId(id)
+    {
+        var element = document.getElementById(id);
+        element.style.display = "";
+    }
+
+    function noneDisplayElementWithId(id)
+    {
+        var element = document.getElementById(id);
+        element.style.display = "none";
+    }
+
+    function HideAllElements()
+    {
+        document.getElementById("register").style.display = "none";
+        document.getElementById("nav").style.display = "none";
+        document.getElementById("map").style.display = "none";
+        document.getElementById("home").style.display = "none";
+
+    }
+
+
+
+
 

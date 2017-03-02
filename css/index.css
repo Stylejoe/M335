@@ -93,16 +93,6 @@ button
     padding:2px 0px;
 }
 
-.event.listening {
-    background-color:#333333;
-    display:block;
-}
-
-.event.received {
-    background-color:#4B946A;
-    display:none;
-}
-
 @keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
@@ -115,7 +105,15 @@ button
     to { opacity: 1.0; }
 }
  
-.blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
+#register {
+    display: none;
+}
+#nav {
+    display: none;
+}
+#map {
+    display: none;
+}
+#home{
+    display: none;
 }
