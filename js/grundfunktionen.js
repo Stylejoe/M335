@@ -16,7 +16,11 @@
     function displayElementWithId(id)
     {
         var element = document.getElementById(id);
+<<<<<<< HEAD
         element.style.display = "block";
+=======
+        element.style.display = "inline-block";
+>>>>>>> faea14b540174b5fafec2ef6a788c558d55206e6
     }
 
     function noneDisplayElementWithId(id)
