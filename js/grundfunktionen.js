@@ -16,7 +16,7 @@
     function displayElementWithId(id)
     {
         var element = document.getElementById(id);
-        element.style.display = "";
+        element.style.display = "inline-block";
     }
 
     function noneDisplayElementWithId(id)

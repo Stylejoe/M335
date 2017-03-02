@@ -28,11 +28,9 @@ body {
     margin:0px;
     padding:0px;
     width:100%;
+    text-align: center !important;
 }
 
-header {
-    height: 10%;
-}
 table
 {
     margin: auto;
@@ -61,6 +59,12 @@ button
     margin: auto;
     height: 300px;
     width: 300px;
+}
+
+.page-content
+{
+    margin-top: 65px !important;
+    padding: 10% !important;
 }
 
 /* Portrait layout (default) */
