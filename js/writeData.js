@@ -52,10 +52,18 @@ function writeHistoryData(latitude, longitude)
     var user = firebase.auth().currentUser;
     var name, email, photoUrl, uid, emailVerified;
 
+    if(user)
+    {
         email = user.email;
         photoUrl = user.photoURL;
         emailVerified = user.emailVerified;
-        uid = user.uid;     // The user's ID, unique to the Firebase project.          
+        uid = user.uid;     // The user's ID, unique to the Firebase project.   
+    }
+    else
+    {
+        return;
+    }
+       
 
 
 
