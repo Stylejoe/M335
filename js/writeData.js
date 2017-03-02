@@ -52,7 +52,6 @@ function writeHistoryData(latitude, longitude)
     var user = firebase.auth().currentUser;
     var name, email, photoUrl, uid, emailVerified;
 
-        console.log("Drinn");
         email = user.email;
         photoUrl = user.photoURL;
         emailVerified = user.emailVerified;

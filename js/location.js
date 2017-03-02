@@ -16,13 +16,10 @@ var lastLong = null;
 
 function onSuccess(position) {
         console.log("onSuccess");
-        
-       console.log("GetLocation Success");
  
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
 
-        console.log("GECHANGED");
         document.getElementById("x").value =  latitude;
         document.getElementById("y").value =  longitude;
         getWeather(latitude, longitude); 
@@ -78,6 +75,6 @@ function onSuccess(position) {
     });  
     }
 
-    //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
+    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
 
     

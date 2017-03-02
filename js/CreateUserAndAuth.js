@@ -93,6 +93,8 @@ function checkForFirstTime(userId) {
 
 function onAuthStateChanged(user) {
 
+console.log("onautstatechanged " + user);
+
   if (user && currentUID === user.uid) {
     return;
   }
@@ -116,7 +118,7 @@ function onAuthStateChanged(user) {
                     console.log("KeinFirstTimeUser");
         }
 
-    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
+    //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
     
     //startDatabaseQueries();
   } else {
