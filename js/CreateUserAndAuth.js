@@ -43,6 +43,7 @@ var loginWithGoogle = document.getElementById('googleAuthentification');
 var emailAuth = document.getElementById("emailAuth");
 var registerEmail = document.getElementById("registerEmail");
 var registerWithEmailLink = document.getElementById("registerWithEmailLink");
+var registerButton = document.getElementById("registerButton");
 var currentUID;
 
 function writeUserData(userId, name, email, imageUrl) {
@@ -151,16 +152,39 @@ window.addEventListener('load', function () {
   emailAuth.addEventListener('click', function () {
     HideAllElements();
     displayElementWithId("login");
-
-    
-
-
   });
 
-  registerWithEmailLink.addEventListener('click', function () {
+
+
+  registerWithEmailLink.addEventListener('click', function() {
     HideAllElements();
     displayElementWithId("registerEmail");
+  });
+
+  registerButton.addEventListener('click', function(){
+    
+    var email = document.getElementById("email").value;
+    var pw = document.getElementById("pw").value;
+    var pwbest = document.getElementById("pwbest").value;
+
+    if(pw == pwbest && pw != "" && email != ""){
+      signInWithEmailAndPw(email, pw);
+    }
+
   })
+
+
+
 });
 
 firebase.auth().onAuthStateChanged(onAuthStateChanged);
+
+function signInWithEmailAndPw(email, password){
+firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+
+}
