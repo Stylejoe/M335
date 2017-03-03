@@ -207,7 +207,7 @@ function onAuthStateChanged(user) {
     else {
       console.log("KeinFirstTimeUser");
     }
-
+    // Aufruf der watchPosition Methode, die Positionsänderungen des Users überprüft
     var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
 
   } else {

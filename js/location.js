@@ -17,25 +17,23 @@
         return wert;
     }
 
-
+    //Bei erfolgreiche Lokalisierung des Users, wird die Funktion onSucces aufgerufen
     function onSuccess(position) {
         console.log("onSuccess");
-
         
- 
+        //Erfassung der Koordinaten
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
+        initMap(latitude,longitude);
 
-          google.maps.event.addDomListener(window, 'load', function(){
-            initMap(latitude, longitude);
-            });
-
+        //Einschreiben der Koordinaten in die Inputfelder
         document.getElementById("x").value =  latitude;
         document.getElementById("y").value =  longitude;
+        
         getWeather(latitude, longitude); 
 
-         console.log("Vergleich " + lastLat + " und " + latitude) + " und nachher";    
-            console.log("Vergleich " + lastLong + " und " + longitude) + ""
+        console.log("Vergleich " + lastLat + " und " + latitude) + " und nachher";    
+        console.log("Vergleich " + lastLong + " und " + longitude) + ""
 
         //Auf zwei stellen wird gerundet und verglichen ob ein neuer Eintrag in DB hinein soll.     
         if(round(lastLat, 2) != round(latitude, 2))
@@ -49,23 +47,30 @@
              $("#y").change();            
         }
 
+        //Die Koordinaten werden zwischengespeichert
         lastLat = latitude;
-        lastLong = longitude;    
+        lastLong = longitude;
+        
     }
-
+    //Falls die Lokalisierung fehlschlägt
     function onError(error) {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
 
+    //Erfassung der Wetterdaten
     function getWeather(latitude, longitude)
     {
+        //openweathermap.org bittet eine Einbettung von Wettererfassung
         console.log("getWeather");
+        //Unser API key von OpenWeathermap.org
         var OpenWeatherAppKey = "22eab7dcbbe43e1135bdfa1db69966ac";
+        //Abfrage von den Wetterdaten
         var queryString =
         'http://api.openweathermap.org/data/2.5/weather?lat='
         + latitude + '&lon=' + longitude + '&appid=' + OpenWeatherAppKey + '&units=metric';    
 
+        //Rückgabe von den Werten
         $.getJSON(queryString, function (results) {
 
             if (results.weather.length) {
@@ -86,11 +91,3 @@
         console.log("error getting location");
     });  
     }
-
-       function navigateToMap()
-    {
-        navigate('home', 'map');
-        
-    }
-
-    //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
