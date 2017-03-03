@@ -57,20 +57,18 @@ if (user != null)
         uid = user.uid;     // The user's ID, unique to the Firebase project.   
     }
 
-       
-
-
-
     var locationHistory = {
-        email: user.email,
         latitude: latitude,
         longitude: longitude,
-        time: time
+
     };
-    var newHistoryKey = firebase.database().ref().child('historys').push().key;
+    
+    var list = firebase.database().ref('users/' + user.uid).orderByChild('latitude');
+    console.log(list);
+    var newHistoryKey = firebase.database().ref().child('/users/'+ user.uid + '/historys/').push().key;
 
     var updates = {};
-    updates['/historys/' + newHistoryKey] = locationHistory;
+    updates['/users/'+ user.uid] = locationHistory;
 
     return firebase.database().ref().update(updates);
 }

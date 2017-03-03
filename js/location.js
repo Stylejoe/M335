@@ -1,7 +1,8 @@
-var lastLat = null;
-var lastLong = null;
-
- function round(zahl, nachkommastelle)
+  var lastLat = null;
+  var lastLong = null;
+  
+   //round function for writeData
+   function round(zahl, nachkommastelle)
     {
         wert = parseFloat(zahl);
         if(!wert){
@@ -14,7 +15,8 @@ var lastLong = null;
         return wert;
     }
 
-function onSuccess(position) {
+
+    function onSuccess(position) {
         console.log("onSuccess");
  
         var latitude = position.coords.latitude;
@@ -26,12 +28,14 @@ function onSuccess(position) {
 
          console.log("Vergleich " + lastLat + " und " + latitude) + " und nachher";    
             console.log("Vergleich " + lastLong + " und " + longitude) + ""
-        if(round(lastLat, 3) != round(latitude, 3))
+
+        //Auf zwei stellen wird gerundet und verglichen ob ein neuer Eintrag in DB hinein soll.     
+        if(round(lastLat, 2) != round(latitude, 2))
         {
             console.log("Vergleich " + lastLat + " und " + latitude) + " sie sind ungleich";
             $("#x").change();           
         }
-        else if(round(lastLong, 3) != round(longitude, 3))
+        else if(round(lastLong, 2) != round(longitude, 2))
         {
                console.log("Vergleich " + lastLong + " und " + longitude) + " sie sind ungleich";
              $("#y").change();            
@@ -75,6 +79,4 @@ function onSuccess(position) {
     });  
     }
 
-    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
-
-    
+    //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});

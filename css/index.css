@@ -1,119 +1,13 @@
-
-* {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-}
-html{
-    height: 100%;
-    width: 100%;
-}
-body {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color: #8BC34A;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    width:100%;
-    text-align: center !important;
-}
-
-table
-{
-    margin: auto;
-}
-h1 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center !important;
-}
-button
-{
-    width: auto !important;
-    height: auto !important;
-}
-.center
-{
-    text-align: center;
-    margin-left: 7%;
-    margin-right: 7%;
-    padding: 7%;
-}
-.mapdiv
-{
-    margin: auto;
-    height: 300px;
-    width: 300px;
-}
-
-.page-content
-{
-    margin-top: 65px !important;
-    padding: 10% !important;
-}
-
-/* Portrait layout (default) */
-.app {
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
-}
-
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
+    main, footer {
+      padding-left: 300px;
     }
-}
 
+    @media only screen and (max-width : 992px) {
+      main, footer, header {
+        padding-left: 0;
+      }
+    }
 
-
-.event {
-    border-radius:4px;
-    -webkit-border-radius:4px;
-    color:#FFFFFF;
-    font-size:12px;
-    margin:0px 30px;
-    padding:2px 0px;
-}
-
-@keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
-@-webkit-keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
-}
- 
 #register {
     display: none;
 }
@@ -132,3 +26,46 @@ button
 #login{
     display: none;
 }
+
+form {
+  box-sizing: border-box;
+  width: 260px;
+  margin: 0 auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
+  padding-bottom: 40px;
+  border-radius: 3px;
+  top: 50%;
+  left: 50%;
+}
+h2{
+  height: 100px;
+  width: 100%;
+  font-size: 18px !important; 
+  background:rgb(63,81,181);
+  color: white;
+  line-height: 150%;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 2px 5px 1px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+  padding: 20px;
+  text-shadow: none !important;
+  font-weight: normal !important;
+}
+
+href{
+     cursor:pointer;
+     color: #6E6E6E; 
+     text-decoration:underline;
+}
+html, body { height: 100%; margin: 0; padding: 0; }
+ #map { 
+     overflow: visible;
+     height: 100%; 
+     }  
+
+#nav{
+    background: rgb(63,81,181);
+}        
+
+.material-icons.orange600 {color: white;
+font-size: 48px;}

@@ -1,18 +1,13 @@
-   //round function for writeData
-   function round(zahl, nachkommastelle)
-    {
-        wert = parseFloat(zahl);
-        if(!wert){
-            return 0;
-        }
+//Navigate in Menu
+function navigate(src,dest)
+{
+    console.log("Navigate Success");
 
-        var umrechnungsnachstelle = Math.pow(10, nachkommastelle);
+    noneDisplayElementWithId(src);
+    displayElementWithId(dest);
+}
 
-        wert = (Math.round(wert * umrechnungsnachstelle) / umrechnungsnachstelle);
-        return wert;
-    }
-
-    //How to show things
+//How to show things
     function displayElementWithId(id)
     {
         var element = document.getElementById(id);
@@ -37,7 +32,11 @@
 
     }
 
-
-
-
-
+    function showStartScreen(){
+        document.getElementById("register").style.display = "none";
+        document.getElementById("nav").style.display = "block";
+        document.getElementById("map").style.display = "none";
+        document.getElementById("home").style.display = "block";
+        document.getElementById("login").style.display = "none";
+         document.getElementById("registerEmail").style.display = "none";
+    }
