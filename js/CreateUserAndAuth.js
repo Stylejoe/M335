@@ -18,6 +18,9 @@ var userEmail;
 var currentUID;
 var normalLogin;
 
+//Wenn es automatisch weitergeleitet wurde!
+var autoFlag = true;
+
 //Schreibt die UserDaten in die DB hinein
 function writeUserData(userId, name, email, imageUrl) {
   firebase.database().ref('users/' + userId).set({
@@ -83,7 +86,7 @@ window.addEventListener('load', function () {
   displayElementWithId("register");
 
   loginWithGoogle.addEventListener('click', function () {
-
+    autoFlag = false;
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider);
   });
@@ -101,6 +104,8 @@ window.addEventListener('load', function () {
   });
 
   registerButton.addEventListener('click', function () {
+
+    autoFlag = false;
 
     email = document.getElementById("email").value;
     name = document.getElementById("displayName").value;
@@ -138,6 +143,7 @@ window.addEventListener('load', function () {
 
   loginButton.addEventListener('click', function () {
 
+    autoFlag = false;
     normalLogin = true;
     var emailLogin = document.getElementById('emailLogin').value;
     var pwLogin = document.getElementById('pwLogin').value;
@@ -152,6 +158,8 @@ window.addEventListener('load', function () {
   });
 
   ausloggen.addEventListener('click', function(){
+
+    autoFlag = false;
 
       firebase.auth().signOut().then(function() {
         alert("Sie sind nun ausgeloggt!");
@@ -187,7 +195,7 @@ function onAuthStateChanged(user) {
     console.log("NAME EMAIL PIK  "+name, email, pic);
     if (!userNonFirstTime()) {
 
-    if(normalLogin != true){
+    if(normalLogin != true && autoFlag != true){
       if(user.displayName == null){        
 
         firebase.database().ref('users/' + user.uid).set({
@@ -205,7 +213,10 @@ function onAuthStateChanged(user) {
       document.getElementById("emailInNav").textContent = user.email;
       }
       }   
+      autoFlag = true;
       normalLogin = false;   
+      document.getElementById("nameInNav").textContent = user.displayName;
+      document.getElementById("emailInNav").textContent = user.email;
     }
     else {
       document.getElementById("nameInNav").textContent = user.displayName;
