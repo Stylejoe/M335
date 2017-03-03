@@ -12,7 +12,7 @@ var ausloggen = document.getElementById("ausloggen");
 var email = document.getElementById("email").value;
 var name = document.getElementById("displayName").value;
 var pw = document.getElementById("pw").value;
-//var pic = document.getElementById("pic");
+var pic = document.getElementById("picUrl").value;
 var pwbest = document.getElementById("pwbest").value;
 var userEmail;
 var currentUID;
@@ -20,7 +20,7 @@ var currentUID;
 //Schreibt die UserDaten in die DB hinein
 function writeUserData(userId, name, email, imageUrl) {
   firebase.database().ref('users/' + userId).set({
-    username: name,
+    displayName: name,
     email: email,
     profile_picture: imageUrl
   });
@@ -106,22 +106,18 @@ window.addEventListener('load', function () {
     email = document.getElementById("email").value;
     name = document.getElementById("displayName").value;
     pw = document.getElementById("pw").value;
-    //var pic = document.getElementById("pic");
+    pic = document.getElementById("pic");
     pwbest = document.getElementById("pwbest").value;
 
-    //check if already exists in Firebase
-    console.log("VORIFHINEINGEKOMMEN!!!!!!!!");
     console.log(email + "\n" + name + "\n" + pw + "\n" + pwbest + "\n");
     if (pw == pwbest && pw != null && email != null) {
 
       firebase.auth().createUserWithEmailAndPassword(email, pw).catch(function (error) {
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // ...
+        return;
+        
       });
-
-
       console.log("Created Account");
 
       signInWithEmailAndPw(email, pw);
@@ -166,7 +162,7 @@ window.addEventListener('load', function () {
     }, function(error) {
         // An error happened.
 });
-  })
+  });
 });
 //Bis hier
 //____________________________________________________________________________________
@@ -188,35 +184,46 @@ function onAuthStateChanged(user) {
 
     //splashPage.style.display = 'none';
 
+    console.log("NAME EMAIL PIK  "+name, email, pic);
     if (!userNonFirstTime()) {
 
 
       if(user.displayName == null){
+
+        
+
         firebase.database().ref('users/' + user.uid).set({
-        username: name,
-        email: email
+        displayName: name,
+        email: email,
+        profile_picture: pic
       });
       userEmail = email;
+      document.getElementById("nameInNav").textContent = name;
+      document.getElementById("emailInNav").textContent = email;
       }
       else{
           writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+          document.getElementById("nameInNav").textContent = user.displayName;
+      document.getElementById("emailInNav").textContent = user.email;
       }
 
       console.log("FirstTImeUser");
     }
     else {
       console.log("KeinFirstTimeUser");
+      document.getElementById("nameInNav").textContent = user.displayName;
+      document.getElementById("emailInNav").textContent = user.email;
     }
+
+
 
     var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
 
   } else {
     // Set currentUID to null.
     currentUID = null;
-    // Display the splash page where you can sign-in.
     HideAllElements();
     displayElementWithId("register");
-    //splashPage.style.display = '';
   }
 }
 
@@ -227,9 +234,8 @@ firebase.auth().onAuthStateChanged(onAuthStateChanged);
 function signInWithEmailAndPw(email, password) {
   console.log(email, password);
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-    // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    // ...
+    return;
   });
 }

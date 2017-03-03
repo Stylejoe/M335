@@ -77,3 +77,8 @@ font-size: 48px;}
     margin: 17% auto;
     text-align: center;
 }
+
+#nameInNav, #emailInNav{
+    color: white;
+    font-weight: bold;
+}
