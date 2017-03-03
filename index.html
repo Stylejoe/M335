@@ -77,6 +77,7 @@
 </header>
 
 <!--Login Fenster!-->
+
 <body>
     <div id="register" class="loginFenster">
         <h1>Tracker App</h1>
@@ -95,14 +96,13 @@
             <button id="registerButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">register</button><br><br>
             <href id="returnToSignIn">return to SignIn</href>
         </form>
-
     </div>
     <div id="login" class="loginFenster">
         <form>
             <h2>Einloggen mit einer E-Mail Adresse: </h2>
             <input placeholder="E-Mail" type="email" name="emaillogin" id="emailLogin"><br>
             <input placeholder="Password" type="password" name="passwordlogin" id="pwLogin"><br>
-            <button id="loginButton" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">register</button><br><br>
+            <button id="loginButton" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Log in</button><br><br>
             <href id="returnToSignInLogin">return to SignIn</href>
         </form>
     </div>
@@ -137,10 +137,8 @@
     <div id="map">
     </div>
 
-
-    </div>
-
-
+    <!--Google Maps import!-->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHVT3Q-9SSCB1jTnzCWGrhXda-L6ZR-lk&callback=initMap"></script>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -152,19 +150,6 @@
     <script type="text/javascript" src="js/sidebar.js"></script>
     <script type="text/javascript" src="js/createUserAndAuth.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
-
-    <!--Google Maps import!-->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHVT3Q-9SSCB1jTnzCWGrhXda-L6ZR-lk&callback=initMap">
-
-    </script>
-
-
-
-
-
-
-
-
 </body>
 
 </html>
