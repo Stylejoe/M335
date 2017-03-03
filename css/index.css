@@ -1,17 +1,3 @@
-    main, footer {
-      padding-left: 300px;
-    }
-
-    @media only screen and (max-width : 992px) {
-      main, footer, header {
-        padding-left: 0;
-      }
-    }
-.loginFenster
-{
-    margin: 17% auto;
-    text-align: center;
-}
 #googleAuthentification, #emailAuth
 {
     margin-top: 5px;
@@ -22,12 +8,17 @@
 }
 #nav {
     display: none;
+    background: rgb(63,81,181);
 }
 #map {
     display: none;
+    overflow: visible;
+    height: 100%;
+    margin: 0 5%;
 }
 #home{
     display: none;
+    margin: 0 5%;
 }
 #registerEmail{
     display: none;
@@ -35,7 +26,20 @@
 #login{
     display: none;
 }
+html, body { 
+    height: 100%; 
+    margin: 0; 
+    padding: 0; 
+    }
+    main, footer {
+      padding-left: 300px;
+    }
 
+    @media only screen and (max-width : 992px) {
+      main, footer, header {
+        padding-left: 0;
+      }
+    }
 form {
   width: 75%;
   margin: 0 auto 0;
@@ -43,6 +47,8 @@ form {
 }
 h1{
     text-align: center;
+    margin: 10px 0 !important;
+    line-height: 1.20 !important;
 }
 h2{
   height: 100px;
@@ -64,22 +70,10 @@ href{
      color: #6E6E6E; 
      text-decoration:underline;
 }
-html, body { 
-    height: 100%; 
-    margin: 0; 
-    padding: 0; 
-    }
- #map { 
-     overflow: visible;
-     height: 100%; 
-     }  
-
-#nav{
-    background: rgb(63,81,181);
-}        
-#home, #map
-{
-    margin: 0 5%;
-}
 .material-icons.orange600 {color: white;
 font-size: 48px;}
+.loginFenster
+{
+    margin: 17% auto;
+    text-align: center;
+}

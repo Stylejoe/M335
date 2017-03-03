@@ -110,7 +110,7 @@
     <!--WETTER -->
     <div id="home">
         <h1>Wetter</h1>
-        <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table">
             <tbody>
                 <tr>
                     <td class="mdl-data-table__cell--non-numeric">Ort</td>
@@ -134,9 +134,7 @@
             <input type="text" name="longitude" id="y" onchange="setData()" readonly>
         </div>
     </div>
-    <div id="map" onload="initCoords()">
-    </div>
-
+    <div id="map" onload="initCoords()"></div>
     <!--Google Maps import!-->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHVT3Q-9SSCB1jTnzCWGrhXda-L6ZR-lk&callback=initMap"></script>
     <!--Import jQuery before materialize.js-->
