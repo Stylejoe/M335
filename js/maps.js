@@ -8,7 +8,6 @@ function initMap(lat, long) {
 
     user = firebase.auth().currentUser;
     myLatLng = {lat: parseFloat(lat), lng: parseFloat(long)}
-    console.log(parseFloat(lat) + " = lat, "+ parseFloat(long) + " = long");
     var map = new google.maps.Map(document.getElementById('map'), { //Eigenschaften unserer generierten Map
     center: myLatLng,
     zoom: 18,

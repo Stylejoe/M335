@@ -36,11 +36,9 @@ ___________________________________________________________________
 function userNonFirstTime() {
   // Get authentication data
   var authData = firebase.auth();
-  console.log(authData);
 
   // Get your user information
   var userid = authData.currentUser.uid;
-  console.log("Der User heisst: " + userid);
 
   if (userid == null) {
     return false;
@@ -116,7 +114,6 @@ window.addEventListener('load', function () {
       firebase.auth().createUserWithEmailAndPassword(email, pw).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-        throw new Error('AuthentificationError');
         
       });
       console.log("Created Account");
@@ -207,12 +204,10 @@ function onAuthStateChanged(user) {
           document.getElementById("nameInNav").textContent = user.displayName;
       document.getElementById("emailInNav").textContent = user.email;
       }
-      console.log("FirstTImeUser");
       }   
       normalLogin = false;   
     }
     else {
-      console.log("KeinFirstTimeUser");
       document.getElementById("nameInNav").textContent = user.displayName;
       document.getElementById("emailInNav").textContent = user.email;
     }
@@ -237,6 +232,5 @@ function signInWithEmailAndPw(email, password) {
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
-     throw new Error('AuthentificationError');
   });
 }

@@ -32,18 +32,13 @@
         
         getWeather(latitude, longitude); 
 
-        console.log("Vergleich " + lastLat + " und " + latitude) + " und nachher";    
-        console.log("Vergleich " + lastLong + " und " + longitude) + ""
-
         //Auf zwei stellen wird gerundet und verglichen ob ein neuer Eintrag in DB hinein soll.     
         if(round(lastLat, 2) != round(latitude, 2))
         {
-            console.log("Vergleich " + lastLat + " und " + latitude) + " sie sind ungleich";
             $("#x").change();           
         }
         else if(round(lastLong, 2) != round(longitude, 2))
         {
-               console.log("Vergleich " + lastLong + " und " + longitude) + " sie sind ungleich";
              $("#y").change();            
         }
 
