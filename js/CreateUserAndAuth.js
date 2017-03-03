@@ -9,6 +9,12 @@ var returnToSignIn = document.getElementById("returnToSignIn");
 var loginButton = document.getElementById("loginButton");
 var returnToSignInLogin = document.getElementById("returnToSignInLogin");
 var ausloggen = document.getElementById("ausloggen");
+var email = document.getElementById("email").value;
+var name = document.getElementById("displayName").value;
+var pw = document.getElementById("pw").value;
+//var pic = document.getElementById("pic");
+var pwbest = document.getElementById("pwbest").value;
+var userEmail;
 var currentUID;
 
 //Schreibt die UserDaten in die DB hinein
@@ -97,10 +103,11 @@ window.addEventListener('load', function () {
 
   registerButton.addEventListener('click', function () {
 
-    var email = document.getElementById("email").value;
-    var name = document.getElementById("displayName").value;
-    var pw = document.getElementById("pw").value;
-    var pwbest = document.getElementById("pwbest").value;
+    email = document.getElementById("email").value;
+    name = document.getElementById("displayName").value;
+    pw = document.getElementById("pw").value;
+    //var pic = document.getElementById("pic");
+    pwbest = document.getElementById("pwbest").value;
 
     //check if already exists in Firebase
     console.log("VORIFHINEINGEKOMMEN!!!!!!!!");
@@ -114,9 +121,11 @@ window.addEventListener('load', function () {
         // ...
       });
 
+
       console.log("Created Account");
 
       signInWithEmailAndPw(email, pw);
+      var user = firebase.auth().currentUser;
 
       console.log("SignedIn");
     }
@@ -135,8 +144,6 @@ window.addEventListener('load', function () {
 
   loginButton.addEventListener('click', function () {
 
-    console.log("HALLO");
-
     var emailLogin = document.getElementById('emailLogin').value;
     var pwLogin = document.getElementById('pwLogin').value;
 
@@ -144,6 +151,7 @@ window.addEventListener('load', function () {
 
     if (emailLogin != null && pwLogin != null) {
       signInWithEmailAndPw(String(emailLogin), String(pwLogin));
+
     }
     showStartScreen();
   });
@@ -181,12 +189,27 @@ function onAuthStateChanged(user) {
     //splashPage.style.display = 'none';
 
     if (!userNonFirstTime()) {
-      writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+
+
+      if(user.displayName == null){
+        firebase.database().ref('users/' + user.uid).set({
+        username: name,
+        email: email
+      });
+      userEmail = email;
+      }
+      else{
+          writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+      }
+
       console.log("FirstTImeUser");
     }
     else {
       console.log("KeinFirstTimeUser");
     }
+
+    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
+
   } else {
     // Set currentUID to null.
     currentUID = null;

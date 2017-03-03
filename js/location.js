@@ -20,9 +20,15 @@
 
     function onSuccess(position) {
         console.log("onSuccess");
+
+        
  
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
+
+          google.maps.event.addDomListener(window, 'load', function(){
+            initMap(latitude, longitude);
+            });
 
         document.getElementById("x").value =  latitude;
         document.getElementById("y").value =  longitude;
@@ -79,6 +85,12 @@
     }).fail(function () {
         console.log("error getting location");
     });  
+    }
+
+       function navigateToMap()
+    {
+        navigate('home', 'map');
+        
     }
 
     //var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});

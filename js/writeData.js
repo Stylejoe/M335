@@ -43,6 +43,7 @@ function writeUserData(userId, name, email, imageUrl) {
 function writeHistoryData(latitude, longitude)
 {
    var user = firebase.auth().currentUser;
+   console.log(user  + "IM WRITEHISTORY");
     var time = firebase.database.ServerValue.TIMESTAMP;
 
 
@@ -55,11 +56,9 @@ if (user != null)
         photoUrl = user.photoURL;
         emailVerified = user.emailVerified;
         uid = user.uid;     // The user's ID, unique to the Firebase project.   
-    }
+    
 
     var locationHistory = {
-        email: user.email,
-        photoUrl: user.photoURL,
         latitude: latitude,
         longitude: longitude
     };
@@ -69,7 +68,7 @@ if (user != null)
     //var newHistoryKey = firebase.database().ref().child('/users/'+ user.uid + '/historys/').push().key;
 
     var updates = {};
-    updates['/users/'+ user.uid] = locationHistory;
+    updates['/users/'+ user.uid + '/history/'] = locationHistory;
 
     /*firebase.database().ref('users/' + user.uid).set({
         latitude: latitude,
@@ -77,4 +76,5 @@ if (user != null)
   });*/
 
     return firebase.database().ref().update(updates);
+    }
 }

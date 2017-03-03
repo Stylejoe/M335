@@ -9,8 +9,8 @@ var app = {
 
     onDeviceReady: function() {
          this.receivedEvent('deviceready');
+    
         
-        var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
         
     }    
     ,receivedEvent: function(id) {
