@@ -1,4 +1,4 @@
-//Navigate in Menu
+//Navigation im Menü
 function navigate(src,dest)
 {
     console.log("Navigate Success");
@@ -7,7 +7,7 @@ function navigate(src,dest)
     displayElementWithId(dest);
 }
 
-//How to show things
+//Funktionen um Container anzuzeigen/verschwinden lassen
     function displayElementWithId(id)
     {
         var element = document.getElementById(id);

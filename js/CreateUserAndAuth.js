@@ -215,8 +215,7 @@ function onAuthStateChanged(user) {
       document.getElementById("emailInNav").textContent = user.email;
     }
 
-
-
+    // Aufruf der watchPosition Methode, die Positionsänderungen des Users überprüft
     var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 }, {enableHighAccuracy: true});
 
   } else {
