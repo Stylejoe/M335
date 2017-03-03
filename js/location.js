@@ -1,5 +1,7 @@
   var lastLat = null;
   var lastLong = null;
+
+
   
    //round function for writeData
    function round(zahl, nachkommastelle)

@@ -1,8 +1,11 @@
-function watchMapPosition() {
-
-    return navigator.geolocation.watchPosition
-        (initMap, MapError, { enableHighAccuracy: true });
+function initCoords() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(initMap, locationError);
+  } else {
+    showError("Your browser does not support Geolocation!");
+  }
 }
+
 
 var map;
 function initMap(position) {
@@ -17,5 +20,7 @@ function initMap(position) {
     zoom: 8
   });
 }
+
+
 
 

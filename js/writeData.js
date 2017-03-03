@@ -58,17 +58,23 @@ if (user != null)
     }
 
     var locationHistory = {
+        email: user.email,
+        photoUrl: user.photoURL,
         latitude: latitude,
-        longitude: longitude,
-
+        longitude: longitude
     };
     
     var list = firebase.database().ref('users/' + user.uid).orderByChild('latitude');
     console.log(list);
-    var newHistoryKey = firebase.database().ref().child('/users/'+ user.uid + '/historys/').push().key;
+    //var newHistoryKey = firebase.database().ref().child('/users/'+ user.uid + '/historys/').push().key;
 
     var updates = {};
     updates['/users/'+ user.uid] = locationHistory;
+
+    /*firebase.database().ref('users/' + user.uid).set({
+        latitude: latitude,
+        longitude: longitude
+  });*/
 
     return firebase.database().ref().update(updates);
 }
