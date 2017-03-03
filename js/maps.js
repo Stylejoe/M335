@@ -1,26 +1,40 @@
-function initCoords() {
+/*function initCoords() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(initMap, locationError);
   } else {
     showError("Your browser does not support Geolocation!");
   }
-}
+}*/
 
 
 var map;
-function initMap(position) {
+var user = firebase.auth().currentUser;
+function initMap(latitude, longitude) {
 
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
+  console.log("MAPSUCCESS");
 
 
-    //console.log(latitude + " = lat, "+ longitude + " = long");
+    user = firebase.auth().currentUser;
+
+console.log(latitude + " = lat, "+ longitude + " = long");
+    var myLatLng = {lat: parseFloat(latitude), lng: parseFloat(longitude)};
+
+    
+    console.log(parseFloat(latitude) + " = lat, "+ parseFloat(longitude) + " = long");
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: latitude, lng: longitude},
-    zoom: 8
+    center: {lat: parseFloat(latitude), lng: parseFloat(longitude)},
+    zoom: 18,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+    // Create a marker and set its position.
+  var marker = new google.maps.Marker({
+        map: map,
+        position: myLatLng,
+        title: userEmail
   });
 }
-
+  
 
 
 
