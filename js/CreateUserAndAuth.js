@@ -16,6 +16,7 @@ var pic = document.getElementById("picUrl").value;
 var pwbest = document.getElementById("pwbest").value;
 var userEmail;
 var currentUID;
+var normalLogin;
 
 //Schreibt die UserDaten in die DB hinein
 function writeUserData(userId, name, email, imageUrl) {
@@ -115,7 +116,7 @@ window.addEventListener('load', function () {
       firebase.auth().createUserWithEmailAndPassword(email, pw).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-        return;
+        throw new Error('AuthentificationError');
         
       });
       console.log("Created Account");
@@ -140,6 +141,7 @@ window.addEventListener('load', function () {
 
   loginButton.addEventListener('click', function () {
 
+    normalLogin = true;
     var emailLogin = document.getElementById('emailLogin').value;
     var pwLogin = document.getElementById('pwLogin').value;
 
@@ -178,6 +180,7 @@ function onAuthStateChanged(user) {
 
   //Wenn eingeloggt
   if (user) {
+
     currentUID = user.uid;
 
     showStartScreen();
@@ -187,10 +190,8 @@ function onAuthStateChanged(user) {
     console.log("NAME EMAIL PIK  "+name, email, pic);
     if (!userNonFirstTime()) {
 
-
-      if(user.displayName == null){
-
-        
+    if(normalLogin != true){
+      if(user.displayName == null){        
 
         firebase.database().ref('users/' + user.uid).set({
         displayName: name,
@@ -206,8 +207,9 @@ function onAuthStateChanged(user) {
           document.getElementById("nameInNav").textContent = user.displayName;
       document.getElementById("emailInNav").textContent = user.email;
       }
-
       console.log("FirstTImeUser");
+      }   
+      normalLogin = false;   
     }
     else {
       console.log("KeinFirstTimeUser");
@@ -235,6 +237,6 @@ function signInWithEmailAndPw(email, password) {
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
-    return;
+     throw new Error('AuthentificationError');
   });
 }
